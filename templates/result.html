@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detection Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqj61gOBJemtm8fupCIoPZCYekvCTtjHhERT5elQANK9cuvaLiyOjBrp" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        {% if filename %}
+            <h2>Uploaded Image</h2>
+            <img src="{{ url_for('static', filename='static/uploads' + filename) }}" alt="Uploaded Image" class="img-fluid">
+        {% endif %}
+        {% if predictions %}
+            <h2>Predicted Emotions</h2>
+            <ul>
+            {% for emotion, confidence in predictions %}
+                <li>{{ emotion }} ({{ confidence:.2f }}%)</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

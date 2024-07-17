@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Data</title>
+    <style>
+        /* Add your CSS styles here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .image-item img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Image ID</th>
+                <th>Image</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>{{ image[0] }}</td>
+                <td class="image-item"><img src="{{ url_for('static', filename='uploads/' + image[1]) }}" alt="Image"></td>
+                <td>{{ image[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
